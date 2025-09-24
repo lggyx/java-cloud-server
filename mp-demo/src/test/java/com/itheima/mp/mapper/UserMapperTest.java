@@ -1,5 +1,6 @@
 package com.itheima.mp.mapper;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.itheima.mp.domain.po.User;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,27 +18,30 @@ class UserMapperTest {
     @Test
     void testInsert() {
         User user = new User();
-        user.setId(5L);
-        user.setUsername("Lucy");
+        user.setId(6L);
+        user.setUsername("Lucy2");
         user.setPassword("123");
         user.setPhone("18688990011");
         user.setBalance(200);
         user.setInfo("{\"age\": 24, \"intro\": \"英文老师\", \"gender\": \"female\"}");
         user.setCreateTime(LocalDateTime.now());
         user.setUpdateTime(LocalDateTime.now());
-        userMapper.saveUser(user);
+        //userMapper.saveUser(user); //MyBatis操作
+        userMapper.insert(user);
     }
 
     @Test
     void testSelectById() {
-        User user = userMapper.queryUserById(5L);
+//        User user = userMapper.queryUserById(5L);
+        User user =userMapper.selectById(6L);
         System.out.println("user = " + user);
     }
 
 
     @Test
     void testQueryByIds() {
-        List<User> users = userMapper.queryUserByIds(List.of(1L, 2L, 3L, 4L));
+//        List<User> users = userMapper.queryUserByIds(List.of(1L, 2L, 3L, 4L));
+        List<User> users=userMapper.selectBatchIds(List.of(1L,2L,3L));
         users.forEach(System.out::println);
     }
 
@@ -46,11 +50,37 @@ class UserMapperTest {
         User user = new User();
         user.setId(5L);
         user.setBalance(20000);
-        userMapper.updateUser(user);
+//        userMapper.updateUser(user);
+        userMapper.updateById(user);
     }
 
     @Test
     void testDeleteUser() {
-        userMapper.deleteUser(5L);
+//        userMapper.deleteUser(5L);
+        userMapper.deleteById(6L);
+    }
+
+    /**
+     * TODO 无论是修改、删除、查询，都可以使用QueryWrapper来构建查询条件。
+     */
+    @Test
+    void testQueryWrapper() {
+        // 1.构建查询条件 where name like "%o%" AND balance >= 1000
+        QueryWrapper<User> wrapper = new QueryWrapper<User>()
+                .select("id", "username", "info", "balance")
+                .like("username", "o")
+                .ge("balance", 1000);
+        // 2.查询数据
+        List<User> users = userMapper.selectList(wrapper);
+        users.forEach(System.out::println);
+    }
+    @Test
+    void testUpdateByQueryWrapper() {
+        // 1.构建查询条件 where name = "Jack"
+        QueryWrapper<User> wrapper = new QueryWrapper<User>().eq("username", "Jack");
+        // 2.更新数据，user中非null字段都会作为set语句
+        User user = new User();
+        user.setBalance(2000);
+        userMapper.update(user, wrapper);
     }
 }
