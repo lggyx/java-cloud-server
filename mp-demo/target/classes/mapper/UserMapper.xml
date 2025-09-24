@@ -51,5 +51,8 @@
         </if>
         LIMIT 10
     </select>
+<!--    <select id="queryUserByWrapper" resultType="com.itheima.mp.domain.po.User">
+        SELECT * FROM user u INNER JOIN address a ON u.id = a.user_id ${ew.customSqlSegment}
+    </select>-->
 
 </mapper>

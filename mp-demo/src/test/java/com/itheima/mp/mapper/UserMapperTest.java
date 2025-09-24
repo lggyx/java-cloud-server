@@ -118,4 +118,31 @@ class UserMapperTest {
  使用了Java的反射机制访问了JDK内部的私有字段
  从Java 9开始，模块系统限制了对JDK内部API的非法访问
  */
+
+    /**
+     * TODO 自定义用法
+     */
+ @Test
+ void testCustomWrapper() {
+     // 1.准备自定义查询条件
+     List<Long> ids = List.of(1L, 2L, 4L);
+     QueryWrapper<User> wrapper = new QueryWrapper<User>().in("id", ids);
+
+     // 2.调用mapper的自定义方法，直接传递Wrapper
+     userMapper.deductBalanceByIds(200, wrapper);
+ }
+
+    @Test
+    void testCustomJoinWrapper() {
+        // 1.准备自定义查询条件
+        QueryWrapper<User> wrapper = new QueryWrapper<User>()
+                .in("u.id", List.of(1L, 2L, 4L))
+                .eq("a.city", "北京");
+
+        // 2.调用mapper的自定义方法
+        List<User> users = userMapper.queryUserByWrapper(wrapper);
+
+        users.forEach(System.out::println);
+    }
+
 }
