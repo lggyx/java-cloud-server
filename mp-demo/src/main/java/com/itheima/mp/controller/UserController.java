@@ -62,22 +62,40 @@ public class UserController {
     public void deductBalance(@PathVariable("id") Long id, @PathVariable("money")Integer money){
         userService.deductBalance(id, money);
     }
-    @GetMapping("/list")
-    @ApiOperation("根据id集合查询用户")
-    public List<UserVO> queryUsers(UserQuery query){
-        // 1.组织条件
-        String username = query.getName();
-        Integer status = query.getStatus();
-        Integer minBalance = query.getMinBalance();
-        Integer maxBalance = query.getMaxBalance();
-        LambdaQueryWrapper<User> wrapper = new QueryWrapper<User>().lambda()
-                .like(username != null, User::getUsername, username)
-                .eq(status != null, User::getStatus, status)
-                .ge(minBalance != null, User::getBalance, minBalance)
-                .le(maxBalance != null, User::getBalance, maxBalance);
-        // 2.查询用户
-        List<User> users = userService.list(wrapper);
-        // 3.处理vo
-        return BeanUtil.copyToList(users, UserVO.class);
-    }
+//    @GetMapping("/list")
+//    @ApiOperation("根据id集合查询用户")
+//    public List<UserVO> queryUsers(UserQuery query){
+//        // 1.组织条件
+//        String username = query.getName();
+//        Integer status = query.getStatus();
+//        Integer minBalance = query.getMinBalance();
+//        Integer maxBalance = query.getMaxBalance();
+//        LambdaQueryWrapper<User> wrapper = new QueryWrapper<User>().lambda()
+//                .like(username != null, User::getUsername, username)
+//                .eq(status != null, User::getStatus, status)
+//                .ge(minBalance != null, User::getBalance, minBalance)
+//                .le(maxBalance != null, User::getBalance, maxBalance);
+//        // 2.查询用户
+//        List<User> users = userService.list(wrapper);
+//        // 3.处理vo
+//        return BeanUtil.copyToList(users, UserVO.class);
+//    }
+@GetMapping("/list")
+@ApiOperation("根据id集合查询用户")
+public List<UserVO> queryUsers(UserQuery query){
+    // 1.组织条件
+    String username = query.getName();
+    Integer status = query.getStatus();
+    Integer minBalance = query.getMinBalance();
+    Integer maxBalance = query.getMaxBalance();
+    // 2.查询用户
+    List<User> users = userService.lambdaQuery()
+            .like(username != null, User::getUsername, username)
+            .eq(status != null, User::getStatus, status)
+            .ge(minBalance != null, User::getBalance, minBalance)
+            .le(maxBalance != null, User::getBalance, maxBalance)
+            .list();
+    // 3.处理vo
+    return BeanUtil.copyToList(users, UserVO.class);
+}
 }
