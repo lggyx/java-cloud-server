@@ -1,14 +1,18 @@
 package com.itheima.mp.controller;
 
 import cn.hutool.core.bean.BeanUtil;
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.itheima.mp.domain.dto.UserFormDTO;
 import com.itheima.mp.domain.po.User;
+import com.itheima.mp.domain.query.UserQuery;
 import com.itheima.mp.domain.vo.UserVO;
 import com.itheima.mp.service.IUserService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -57,5 +61,23 @@ public class UserController {
     @ApiOperation("扣减用户余额")
     public void deductBalance(@PathVariable("id") Long id, @PathVariable("money")Integer money){
         userService.deductBalance(id, money);
+    }
+    @GetMapping("/list")
+    @ApiOperation("根据id集合查询用户")
+    public List<UserVO> queryUsers(UserQuery query){
+        // 1.组织条件
+        String username = query.getName();
+        Integer status = query.getStatus();
+        Integer minBalance = query.getMinBalance();
+        Integer maxBalance = query.getMaxBalance();
+        LambdaQueryWrapper<User> wrapper = new QueryWrapper<User>().lambda()
+                .like(username != null, User::getUsername, username)
+                .eq(status != null, User::getStatus, status)
+                .ge(minBalance != null, User::getBalance, minBalance)
+                .le(maxBalance != null, User::getBalance, maxBalance);
+        // 2.查询用户
+        List<User> users = userService.list(wrapper);
+        // 3.处理vo
+        return BeanUtil.copyToList(users, UserVO.class);
     }
 }
