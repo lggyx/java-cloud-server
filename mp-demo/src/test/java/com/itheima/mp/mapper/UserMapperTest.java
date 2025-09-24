@@ -95,4 +95,27 @@ class UserMapperTest {
         // 而是基于UpdateWrapper中的setSQL来更新
         userMapper.update(null, wrapper);
     }
+    /**
+     * TODO LambdaQueryWrapper
+     *  无论是QueryWrapper还是UpdateWrapper在构造条件的时候都需要写死字段名称，
+     *  会出现字符串魔法值。
+     *  这在编程规范中显然是不推荐的。
+     *  字符串魔法值就是凭空出现的字符串常量，影响代码可读性
+     */
+    @Test
+    void testLambdaQueryWrapper() {
+        // 1.构建条件 WHERE username LIKE "%o%" AND balance >= 1000
+        QueryWrapper<User> wrapper = new QueryWrapper<>();
+        wrapper.lambda()
+                .select(User::getId, User::getUsername, User::getInfo, User::getBalance)
+                .like(User::getUsername, "o")
+                .ge(User::getBalance, 1000);
+        // 2.查询
+        List<User> users = userMapper.selectList(wrapper);
+        users.forEach(System.out::println);
+    }
+ /*   MyBatis-Plus为了实现某些功能（如Lambda表达式相关功能），
+ 使用了Java的反射机制访问了JDK内部的私有字段
+ 从Java 9开始，模块系统限制了对JDK内部API的非法访问
+ */
 }
