@@ -53,4 +53,9 @@ public class UserController {
         // 2.处理vo
         return BeanUtil.copyToList(users, UserVO.class);
     }
+    @PutMapping("{id}/deduction/{money}")
+    @ApiOperation("扣减用户余额")
+    public void deductBalance(@PathVariable("id") Long id, @PathVariable("money")Integer money){
+        userService.deductBalance(id, money);
+    }
 }
