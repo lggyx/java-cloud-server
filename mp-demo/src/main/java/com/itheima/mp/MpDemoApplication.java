@@ -9,6 +9,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class MpDemoApplication {
 
     public static void main(String[] args) {
+        args=new String[]{"--mpw.key=5a088297c2d61098"};
         SpringApplication.run(MpDemoApplication.class, args);
     }
 

@@ -1,5 +1,8 @@
 package com.itheima.mp;
 
+import com.baomidou.mybatisplus.core.metadata.OrderItem;
+import com.baomidou.mybatisplus.core.toolkit.AES;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.toolkit.Db;
 import com.itheima.mp.controller.UserController;
 import com.itheima.mp.domain.po.Address;
@@ -12,36 +15,38 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import javax.annotation.Resource;
 import java.time.LocalDateTime;
 import java.util.List;
 
-@SpringBootTest
+@SpringBootTest(args = "--mpw.key=5a088297c2d61098")
 class MpDemoApplicationTests {
+
+    @Autowired
+    UserController userController;
+    @Autowired
+    IUserService userService;
+    @Autowired
+    IAddressService addressService;
 
     @Test
     void contextLoads() {
 
     }
 
-    @Autowired
-   UserController userController;
     @Test
-    void queryUsers(){
-        UserQuery userQuery=new UserQuery();
+    void queryUsers() {
+        UserQuery userQuery = new UserQuery();
         userQuery.setName("");
         userQuery.setStatus(1);
         userQuery.setMaxBalance(20000);
         userQuery.setMinBalance(1);
-        List<UserVO> ans=userController.queryUsers(userQuery);
+        List<UserVO> ans = userController.queryUsers(userQuery);
 //        for(UserVO user : ans){
 //            System.out.println(user.getUsername());
 //        }
         ans.forEach(System.out::println);
     }
 
-    @Autowired
-    IUserService userService;
     @Test
     void testSaveOneByOne() {
         long b = System.currentTimeMillis();
@@ -58,11 +63,12 @@ class MpDemoApplicationTests {
         user.setPassword("123");
         user.setPhone("" + (18688190000L + i));
         user.setBalance(2000);
-        user.setInfo("{\"age\": 24, \"intro\": \"英文老师\", \"gender\": \"female\"}");
+//        user.setInfo("{\"age\": 24, \"intro\": \"英文老师\", \"gender\": \"female\"}");
         user.setCreateTime(LocalDateTime.now());
         user.setUpdateTime(user.getCreateTime());
         return user;
     }
+
     @Test
     void testDbGet() {
         User user = Db.getById(1L, User.class);
@@ -72,42 +78,75 @@ class MpDemoApplicationTests {
     @Test
     void testDbList() {
         // 利用Db实现复杂条件查询
-        List<User> list = Db.lambdaQuery(User.class)
-                .like(User::getUsername, "o")
-                .ge(User::getBalance, 1000)
-                .list();
+        List<User> list = Db.lambdaQuery(User.class).like(User::getUsername, "o").ge(User::getBalance, 1000).list();
         list.forEach(System.out::println);
     }
 
     @Test
     void testDbUpdate() {
-        Db.lambdaUpdate(User.class)
-                .set(User::getBalance, 2000)
-                .eq(User::getUsername, "Rose");
+        Db.lambdaUpdate(User.class).set(User::getBalance, 2000).eq(User::getUsername, "Rose");
     }
-
 
     @Test
-    void queryUserAndAddressById(){
-       UserVO userVO= userController.queryUserById(2L);
+    void queryUserAndAddressById() {
+        UserVO userVO = userController.queryUserById(2L);
         System.out.println(userVO.getUsername());
     }
-    @Autowired
-    IAddressService addressService;
 
     @Test
     void testDeleteByLogic() {
         // 删除方法与以前没有区别
         addressService.removeById(59L);
     }
+
     @Test
     void testQuery() {
         List<Address> list = addressService.list();
         list.forEach(System.out::println);
     }
+
     @Test
     void testService() {
         List<User> list = userService.list();
         list.forEach(System.out::println);
+    }
+
+    @Test
+    void genAesKey() {
+        // 生成 16 位随机 AES 密钥
+        String randomKey = AES.generateRandomKey();
+        System.out.println("randomKey = " + randomKey);
+
+        // 利用密钥对用户名加密
+        String username = AES.encrypt("root", randomKey);
+        System.out.println("username = " + username);
+
+        // 利用密钥对用户名加密
+        String password = AES.encrypt("root", randomKey);
+        System.out.println("password = " + password);
+    }
+
+    @Test
+    void testPageQuery() {
+        // 1.分页查询，new Page()的两个参数分别是：页码、每页大小
+        Page<User> p = userService.page(new Page<>(2, 2));
+        // 2.总条数
+        System.out.println("total = " + p.getTotal());
+        // 3.总页数
+        System.out.println("pages = " + p.getPages());
+        // 4.数据
+        List<User> records = p.getRecords();
+        records.forEach(System.out::println);
+    }
+
+    @Test
+    void testPageQuery2() {
+        int pageNo = 1, pageSize = 5;
+        // 分页参数
+        Page<User> page = Page.of(pageNo, pageSize);
+        // 排序参数, 通过OrderItem来指定
+        page.addOrder(new OrderItem("balance", false));
+
+        userService.page(page);
     }
 }
