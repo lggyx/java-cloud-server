@@ -14,6 +14,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
+import static com.itheima.mp.enums.UserStatus.NORMAL;
+
 @Service
 public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IUserService {
     //    @Override
@@ -37,7 +39,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
         // 1.查询用户
         User user = getById(id);
         // 2.校验用户状态
-        if (user == null || user.getStatus() == 2) {
+        if (user == null || user.getStatus() == NORMAL) {
             throw new RuntimeException("用户状态异常！");
         }
         // 3.校验余额是否充足

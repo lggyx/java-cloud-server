@@ -105,4 +105,9 @@ class MpDemoApplicationTests {
         List<Address> list = addressService.list();
         list.forEach(System.out::println);
     }
+    @Test
+    void testService() {
+        List<User> list = userService.list();
+        list.forEach(System.out::println);
+    }
 }
