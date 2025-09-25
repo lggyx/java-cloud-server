@@ -22,7 +22,7 @@ import lombok.experimental.Accessors;
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
 @TableName("address")
-@ApiModel(value="Address对象", description="")
+@ApiModel(value="Address对象", description="收货地址")
 public class Address implements Serializable {
 
     private static final long serialVersionUID = 1L;

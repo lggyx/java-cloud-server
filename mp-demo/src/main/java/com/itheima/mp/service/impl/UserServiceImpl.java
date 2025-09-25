@@ -1,11 +1,18 @@
 package com.itheima.mp.service.impl;
 
+import cn.hutool.core.bean.BeanUtil;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.baomidou.mybatisplus.extension.toolkit.Db;
+import com.itheima.mp.domain.po.Address;
 import com.itheima.mp.domain.po.User;
+import com.itheima.mp.domain.vo.AddressVO;
+import com.itheima.mp.domain.vo.UserVO;
 import com.itheima.mp.mapper.UserMapper;
 import com.itheima.mp.service.IUserService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
 
 @Service
 public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IUserService {
@@ -43,5 +50,22 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
                 .set(remainBalance == 0, User::getStatus, 2) // 动态判断，是否更新status
                 .eq(User::getId, id).eq(User::getBalance, user.getBalance()) // 乐观锁
                 .update();
+    }
+
+    @Override
+    public UserVO queryUserAndAddressById(Long userId) {
+        // 1.查询用户
+        User user = getById(userId);
+        if (user == null) {
+            return null;
+        }
+        // 2.查询收货地址
+        List<Address> addresses = Db.lambdaQuery(Address.class)
+                .eq(Address::getUserId, userId)
+                .list();
+        // 3.处理vo
+        UserVO userVO = BeanUtil.copyProperties(user, UserVO.class);
+        userVO.setAddresses(BeanUtil.copyToList(addresses, AddressVO.class));
+        return userVO;
     }
 }

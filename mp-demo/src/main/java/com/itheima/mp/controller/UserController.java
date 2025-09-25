@@ -24,7 +24,7 @@ public class UserController {
 
     @PostMapping
     @ApiOperation("新增用户")
-    public void saveUser(@RequestBody UserFormDTO userFormDTO){
+    public void saveUser(@RequestBody UserFormDTO userFormDTO) {
         // 1.转换DTO为PO
         User user = BeanUtil.copyProperties(userFormDTO, User.class);
         // 2.新增
@@ -33,33 +33,41 @@ public class UserController {
 
     @DeleteMapping("/{id}")
     @ApiOperation("删除用户")
-    public void removeUserById(@PathVariable("id") Long userId){
+    public void removeUserById(@PathVariable("id") Long userId) {
         userService.removeById(userId);
     }
 
+    //    @GetMapping("/{id}")
+    //    @ApiOperation("根据id查询用户")
+    //    public UserVO queryUserById(@PathVariable("id") Long userId){
+    //        // 1.查询用户
+    //        User user = userService.getById(userId);
+    //        // 2.处理vo
+    //        return BeanUtil.copyProperties(user, UserVO.class);
+    //    }
     @GetMapping("/{id}")
     @ApiOperation("根据id查询用户")
-    public UserVO queryUserById(@PathVariable("id") Long userId){
-        // 1.查询用户
-        User user = userService.getById(userId);
-        // 2.处理vo
-        return BeanUtil.copyProperties(user, UserVO.class);
+    public UserVO queryUserById(@PathVariable("id") Long userId) {
+        // 基于自定义service方法查询
+        return userService.queryUserAndAddressById(userId);
     }
 
     @GetMapping
     @ApiOperation("根据id集合查询用户")
-    public List<UserVO> queryUserByIds(@RequestParam("ids") List<Long> ids){
+    public List<UserVO> queryUserByIds(@RequestParam("ids") List<Long> ids) {
         // 1.查询用户
         List<User> users = userService.listByIds(ids);
         // 2.处理vo
         return BeanUtil.copyToList(users, UserVO.class);
     }
+
     @PutMapping("{id}/deduction/{money}")
     @ApiOperation("扣减用户余额")
-    public void deductBalance(@PathVariable("id") Long id, @PathVariable("money")Integer money){
+    public void deductBalance(@PathVariable("id") Long id, @PathVariable("money") Integer money) {
         userService.deductBalance(id, money);
     }
-//    @GetMapping("/list")
+
+    //    @GetMapping("/list")
 //    @ApiOperation("根据id集合查询用户")
 //    public List<UserVO> queryUsers(UserQuery query){
 //        // 1.组织条件
@@ -77,22 +85,22 @@ public class UserController {
 //        // 3.处理vo
 //        return BeanUtil.copyToList(users, UserVO.class);
 //    }
-@GetMapping("/list")
-@ApiOperation("根据id集合查询用户")
-public List<UserVO> queryUsers(UserQuery query){
-    // 1.组织条件
-    String username = query.getName();
-    Integer status = query.getStatus();
-    Integer minBalance = query.getMinBalance();
-    Integer maxBalance = query.getMaxBalance();
-    // 2.查询用户
-    List<User> users = userService.lambdaQuery()
-            .like(username != null, User::getUsername, username)
-            .eq(status != null, User::getStatus, status)
-            .ge(minBalance != null, User::getBalance, minBalance)
-            .le(maxBalance != null, User::getBalance, maxBalance)
-            .list();
-    // 3.处理vo
-    return BeanUtil.copyToList(users, UserVO.class);
-}
+    @GetMapping("/list")
+    @ApiOperation("根据id集合查询用户")
+    public List<UserVO> queryUsers(UserQuery query) {
+        // 1.组织条件
+        String username = query.getName();
+        Integer status = query.getStatus();
+        Integer minBalance = query.getMinBalance();
+        Integer maxBalance = query.getMaxBalance();
+        // 2.查询用户
+        List<User> users = userService.lambdaQuery()
+                .like(username != null, User::getUsername, username)
+                .eq(status != null, User::getStatus, status)
+                .ge(minBalance != null, User::getBalance, minBalance)
+                .le(maxBalance != null, User::getBalance, maxBalance)
+                .list();
+        // 3.处理vo
+        return BeanUtil.copyToList(users, UserVO.class);
+    }
 }

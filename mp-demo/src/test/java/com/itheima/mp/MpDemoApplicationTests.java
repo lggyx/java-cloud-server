@@ -1,5 +1,6 @@
 package com.itheima.mp;
 
+import com.baomidou.mybatisplus.extension.toolkit.Db;
 import com.itheima.mp.controller.UserController;
 import com.itheima.mp.domain.po.User;
 import com.itheima.mp.domain.query.UserQuery;
@@ -60,5 +61,33 @@ class MpDemoApplicationTests {
         user.setUpdateTime(user.getCreateTime());
         return user;
     }
+    @Test
+    void testDbGet() {
+        User user = Db.getById(1L, User.class);
+        System.out.println(user);
+    }
 
+    @Test
+    void testDbList() {
+        // 利用Db实现复杂条件查询
+        List<User> list = Db.lambdaQuery(User.class)
+                .like(User::getUsername, "o")
+                .ge(User::getBalance, 1000)
+                .list();
+        list.forEach(System.out::println);
+    }
+
+    @Test
+    void testDbUpdate() {
+        Db.lambdaUpdate(User.class)
+                .set(User::getBalance, 2000)
+                .eq(User::getUsername, "Rose");
+    }
+
+
+    @Test
+    void queryUserAndAddressById(){
+       UserVO userVO= userController.queryUserById(2L);
+        System.out.println(userVO.getUsername());
+    }
 }
