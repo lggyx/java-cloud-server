@@ -2,9 +2,11 @@ package com.itheima.mp;
 
 import com.baomidou.mybatisplus.extension.toolkit.Db;
 import com.itheima.mp.controller.UserController;
+import com.itheima.mp.domain.po.Address;
 import com.itheima.mp.domain.po.User;
 import com.itheima.mp.domain.query.UserQuery;
 import com.itheima.mp.domain.vo.UserVO;
+import com.itheima.mp.service.IAddressService;
 import com.itheima.mp.service.IUserService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -89,5 +91,18 @@ class MpDemoApplicationTests {
     void queryUserAndAddressById(){
        UserVO userVO= userController.queryUserById(2L);
         System.out.println(userVO.getUsername());
+    }
+    @Autowired
+    IAddressService addressService;
+
+    @Test
+    void testDeleteByLogic() {
+        // 删除方法与以前没有区别
+        addressService.removeById(59L);
+    }
+    @Test
+    void testQuery() {
+        List<Address> list = addressService.list();
+        list.forEach(System.out::println);
     }
 }
