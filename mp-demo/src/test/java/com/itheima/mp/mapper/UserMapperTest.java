@@ -10,7 +10,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import java.time.LocalDateTime;
 import java.util.List;
 
-@SpringBootTest
+@SpringBootTest(args = "--mpw.key=5a088297c2d61098")
 class UserMapperTest {
 
     @Autowired

@@ -16,6 +16,7 @@ import com.itheima.mp.service.IUserService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -80,25 +81,26 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
     public PageDTO<UserVO> queryUsersPage(PageQuery query) {
         // 1.构建条件
         // 1.1.分页条件
-        Page<User> page = Page.of(query.getPageNo(), query.getPageSize());
+        // 确保 pageNo 和 pageSize 不为 null
+        int pageNo = query.getPageNo() != null ? query.getPageNo() : 1;
+        int pageSize = query.getPageSize() != null ? query.getPageSize() : 10;
+        Page<User> page = Page.of(pageNo, pageSize);
+
         // 1.2.排序条件
-        if (query.getSortBy() != null) {
+        if (query.getSortBy() != null && !query.getSortBy().isEmpty()) {
             page.addOrder(new OrderItem(query.getSortBy(), query.getIsAsc()));
-        }else{
+        } else {
             // 默认按照更新时间排序
             page.addOrder(new OrderItem("update_time", false));
         }
+
         // 2.查询
         page(page);
+
         // 3.数据非空校验
         List<User> records = page.getRecords();
-        if (records == null || records.size() <= 0) {
-            // 无数据，返回空结果
-            PageDTO pageDTO=new PageDTO<>();
-            pageDTO.setPages(page.getPages());
-            pageDTO.setList(list());
-            pageDTO.setTotal(page.getTotal());
-            return pageDTO;
+        if (records == null) {
+            records = new ArrayList<>(); // 防止 getRecords 返回 null
         }
         // 4.有数据，转换
         List<UserVO> list = BeanUtil.copyToList(records, UserVO.class);
