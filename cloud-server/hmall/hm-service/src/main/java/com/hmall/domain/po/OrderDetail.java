@@ -26,7 +26,7 @@ public class OrderDetail implements Serializable {
     private static final long serialVersionUID = 1L;
 
     /**
-     * 订单详情id 
+     * 订单详情id
      */
     @TableId(value = "id", type = IdType.AUTO)
     private Long id;

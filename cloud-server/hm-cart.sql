@@ -18,7 +18,6 @@
 -- 导出 hmall 的数据库结构
 CREATE DATABASE IF NOT EXISTS `hm-cart` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
 USE `hm-cart`;
-
 -- 导出  表 hmall.cart 结构
 DROP TABLE IF EXISTS `cart`;
 CREATE TABLE IF NOT EXISTS `cart` (
