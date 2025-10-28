@@ -1,6 +1,7 @@
 package com.hmall.service.impl;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.hmall.common.exception.BadRequestException;
 import com.hmall.common.exception.BizIllegalException;
 import com.hmall.common.exception.ForbiddenException;
 import com.hmall.common.utils.UserContext;
@@ -14,6 +15,7 @@ import com.hmall.service.IUserService;
 import com.hmall.utils.JwtTool;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
@@ -48,10 +50,10 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
         if (user.getStatus() == UserStatus.FROZEN) {
             throw new ForbiddenException("用户被冻结");
         }
-        log.info("当前登录用户：{}",user.toString());
-        log.info("登录数据库密码：{}",password);
+        log.info("数据库中当前登录用户：{}",user.toString());
+        log.info("前端登录密码：{}",password);
 //        // 4.校验密码
-//        if (!passwordEncoder.matches(password, user.getPassword())) {
+//        if (!passwordEncoder.matches(correct,user.getPassword())) {
 //            throw new BadRequestException("用户名或密码错误");
 //        }
         // 5.生成TOKEN

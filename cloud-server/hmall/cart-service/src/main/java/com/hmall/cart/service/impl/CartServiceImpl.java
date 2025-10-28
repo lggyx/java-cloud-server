@@ -3,20 +3,25 @@ package com.hmall.cart.service.impl;
 import cn.hutool.core.util.StrUtil;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.hmall.api.client.ItemClient;
+import com.hmall.api.dto.ItemDTO;
 import com.hmall.cart.domain.dto.CartFormDTO;
 import com.hmall.cart.domain.po.Cart;
 import com.hmall.cart.domain.vo.CartVO;
 import com.hmall.cart.mapper.CartMapper;
 import com.hmall.cart.service.ICartService;
+import com.hmall.common.exception.BadRequestException;
 import com.hmall.common.exception.BizIllegalException;
 import com.hmall.common.utils.BeanUtils;
 import com.hmall.common.utils.CollUtils;
 import com.hmall.common.utils.UserContext;
 import lombok.RequiredArgsConstructor;
+import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.stereotype.Service;
-
 import java.util.Collection;
 import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 /**
  * <p>
@@ -26,10 +31,12 @@ import java.util.List;
  * @author 虎哥
  * @since 2023-05-05
  */
+@EnableFeignClients()
 @Service
 @RequiredArgsConstructor
 public class CartServiceImpl extends ServiceImpl<CartMapper, Cart> implements ICartService {
-
+    private final ItemClient itemClient;
+//    private final DiscoveryClient discoveryClient;
     // private final IItemService itemService;
 
     @Override
@@ -58,7 +65,7 @@ public class CartServiceImpl extends ServiceImpl<CartMapper, Cart> implements IC
     @Override
     public List<CartVO> queryMyCarts() {
         // 1.查询我的购物车列表
-        List<Cart> carts = lambdaQuery().eq(Cart::getUserId, 1L /*TODO UserContext.getUser()*/).list();
+        List<Cart> carts = lambdaQuery().eq(Cart::getUserId, 2L /*TODO UserContext.getUser()*/).list();
         if (CollUtils.isEmpty(carts)) {
             return CollUtils.emptyList();
         }
@@ -70,13 +77,36 @@ public class CartServiceImpl extends ServiceImpl<CartMapper, Cart> implements IC
         return vos;
     }
 
+//    List<ServiceInstance> instances=discoveryClient.getInstances("item-service");
+//    ServiceInstance instance=instances.get(RandomUtil.randomInt(instances.size()));
+
     private void handleCartItems(List<CartVO> vos) {
-        // 1.获取商品id TODO 处理商品信息
-        /*Set<Long> itemIds = vos.stream().map(CartVO::getItemId).collect(Collectors.toSet());
+        // TODO 1.获取商品id
+        Set<Long> itemIds = vos.stream().map(CartVO::getItemId).collect(Collectors.toSet());
         // 2.查询商品
-        List<ItemDTO> items = itemService.queryItemByIds(itemIds);
+//         List<ItemDTO> items = itemService.queryItemByIds(itemIds);
+        List<ItemDTO> items=itemClient.queryItemByIds(itemIds);
+        if(CollUtils.isEmpty(items)){
+            throw new BadRequestException("购物车中商品不存在");
+        }
+        // 2.1.利用RestTemplate发起http请求，得到http的响应
+      /*  TestRestTemplate restTemplate = new TestRestTemplate();
+        ResponseEntity<List<ItemDTO>> response = restTemplate.exchange(
+                instance.getUri()+"/items?ids={ids}",
+                HttpMethod.GET,
+                null,
+                new ParameterizedTypeReference<List<ItemDTO>>() {
+                },
+                Map.of("ids", CollUtil.join(itemIds, ","))
+        );
+        // 2.2.解析响应
+        if(!response.getStatusCode().is2xxSuccessful()){
+            // 查询失败，直接结束
+            return;
+        }
+        List<ItemDTO> items = response.getBody();
         if (CollUtils.isEmpty(items)) {
-            throw new BadRequestException("购物车中商品不存在！");
+            return;
         }
         // 3.转为 id 到 item的map
         Map<Long, ItemDTO> itemMap = items.stream().collect(Collectors.toMap(ItemDTO::getId, Function.identity()));
@@ -117,4 +147,6 @@ public class CartServiceImpl extends ServiceImpl<CartMapper, Cart> implements IC
                 .count();
         return count > 0;
     }
+
+
 }
