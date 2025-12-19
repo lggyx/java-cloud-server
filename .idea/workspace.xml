@@ -5,12 +5,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4d1056a6-6ebd-478f-bc55-2da16b2db4f7" name="更改" comment="开启Feign的连接池功能，使用okhttp">
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sqldialects.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hm-api/src/main/java/com/hmall/api/client/ItemClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/hm-api/src/main/java/com/hmall/api/client/ItemClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/address-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/address-service/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/logs/cart-service/spring.log" beforeDir="false" afterPath="$PROJECT_DIR$/logs/cart-service/spring.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/hm-service/spring.log" beforeDir="false" afterPath="$PROJECT_DIR$/logs/hm-service/spring.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/logs/item-service/spring.log" beforeDir="false" afterPath="$PROJECT_DIR$/logs/item-service/spring.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/trade-service/src/main/java/com/hmall/trade/TradeServiceApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/trade-service/src/main/java/com/hmall/trade/TradeApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/trade-service/src/test/java/com/hmall/trade/TradeServiceApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/trade-service/src/test/java/com/hmall/trade/TradeApplicationTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/trade-service/spring.log" beforeDir="false" afterPath="$PROJECT_DIR$/logs/trade-service/spring.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pay-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pay-service/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pay-service/src/main/resources/META-INF/maven/archetype.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pay-service/src/main/resources/archetype-resources/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pay-service/src/main/resources/archetype-resources/src/main/java/App.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pay-service/src/main/resources/archetype-resources/src/test/java/AppTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/trade-service/src/main/resources/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/trade-service/src/main/resources/application.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-service/src/main/resources/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/user-service/src/main/resources/application.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -21,6 +32,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Class" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
@@ -69,10 +81,12 @@
     "Spring Boot.HMallApplication.executor": "Run",
     "Spring Boot.ItemApplication (1).executor": "Run",
     "Spring Boot.ItemApplication.executor": "Run",
+    "Spring Boot.TradeApplication.executor": "Run",
+    "Spring Boot.UserApplication.executor": "Run",
     "git-widget-placeholder": "main",
     "jdk.selected.JAVA_MODULE": "11",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "D:/DevPlan/abackend/java-cloud-server/trade-service/src/main/resources/mapper",
+    "last_opened_file_path": "D:/DevPlan/abackend/java-cloud-server/pay-service/src/main/java/com/hmall/pay/service",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -82,10 +96,15 @@
     "project.structure.proportion": "0.0",
     "project.structure.side.proportion": "0.0",
     "run.configurations.included.in.services": "true",
+    "settings.editor.selected.configurable": "preferences.lookFeel",
     "vue.rearranger.settings.migration": "true",
     "数据库脚本.hm-cart.sql.executor": "Run",
     "数据库脚本.hm-item.sql.executor": "Run",
-    "数据库脚本.hmall.sql.executor": "Run"
+    "数据库脚本.hm-pay.sql.executor": "Run",
+    "数据库脚本.hm-trade.sql.executor": "Run",
+    "数据库脚本.hm-user.sql.executor": "Run",
+    "数据库脚本.hmall.sql.executor": "Run",
+    "数据库脚本.nacos.sql.executor": "Run"
   },
   "keyToStringList": {
     "DatabaseDriversLRU": [
@@ -101,18 +120,18 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\DevPlan\abackend\java-cloud-server\trade-service\src\main\resources\mapper" />
-      <recent name="D:\DevPlan\abackend\java-cloud-server\trade-service\src\main\java\com\hmall\trade\service" />
-      <recent name="D:\DevPlan\abackend\java-cloud-server\trade-service\src\main\java\com\hmall\trade\domain\po" />
-      <recent name="D:\DevPlan\abackend\java-cloud-server\trade-service\src\main\resources" />
-      <recent name="D:\DevPlan\abackend\java-cloud-server\hm-api\src\main\java\com\hmall\api\" />
+      <recent name="D:\DevPlan\abackend\java-cloud-server\pay-service\src\main\java\com\hmall\pay\service" />
+      <recent name="D:\DevPlan\abackend\java-cloud-server\pay-service\src\main\java\com\hmall\pay" />
+      <recent name="D:\DevPlan\abackend\java-cloud-server\hm-api\src\main\java\com\hmall\api\dto" />
+      <recent name="D:\DevPlan\abackend\java-cloud-server\pay-service\src\main\resources" />
+      <recent name="D:\DevPlan\abackend\java-cloud-server\user-service\src\main\resources" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="com.hmall.trade.service.impl" />
-      <recent name="com.hmall.trade.mapper" />
-      <recent name="com.hmall.trade.service" />
-      <recent name="com.hmall.trade.domain.vo" />
-      <recent name="com.hmall.api.dto" />
+      <recent name="com.hmall.pay.mapper" />
+      <recent name="com.hmall.pay.domain.po" />
+      <recent name="com.hmall.pay.controller" />
+      <recent name="com.hmall.user.mapper" />
+      <recent name="com.hmall.user.domain.po" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -125,21 +144,33 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="数据库脚本.hm-cart.sql">
+  <component name="RunManager" selected="数据库脚本.nacos.sql">
     <configuration name="hm-cart.sql" type="DatabaseScript" editBeforeRun="true" temporary="true" nameIsGenerated="true">
       <script-file value="$PROJECT_DIR$/db/hm-cart.sql" />
       <script-mode>FILE</script-mode>
       <data-source id="c51aba65-883b-45e1-b86a-718521c5aa59" />
       <method v="2" />
     </configuration>
-    <configuration name="hm-item.sql" type="DatabaseScript" editBeforeRun="true" temporary="true" nameIsGenerated="true">
-      <script-file value="$PROJECT_DIR$/db/hm-item.sql" />
+    <configuration name="hm-pay.sql" type="DatabaseScript" editBeforeRun="true" temporary="true" nameIsGenerated="true">
+      <script-file value="$PROJECT_DIR$/db/hm-pay.sql" />
       <script-mode>FILE</script-mode>
       <data-source id="c51aba65-883b-45e1-b86a-718521c5aa59" />
       <method v="2" />
     </configuration>
-    <configuration name="hmall.sql" type="DatabaseScript" editBeforeRun="true" temporary="true" nameIsGenerated="true">
-      <script-file value="$PROJECT_DIR$/mysql/init/hmall.sql" />
+    <configuration name="hm-trade.sql" type="DatabaseScript" editBeforeRun="true" temporary="true" nameIsGenerated="true">
+      <script-file value="$PROJECT_DIR$/db/hm-trade.sql" />
+      <script-mode>FILE</script-mode>
+      <data-source id="c51aba65-883b-45e1-b86a-718521c5aa59" />
+      <method v="2" />
+    </configuration>
+    <configuration name="hm-user.sql" type="DatabaseScript" editBeforeRun="true" temporary="true" nameIsGenerated="true">
+      <script-file value="$PROJECT_DIR$/db/hm-user.sql" />
+      <script-mode>FILE</script-mode>
+      <data-source id="c51aba65-883b-45e1-b86a-718521c5aa59" />
+      <method v="2" />
+    </configuration>
+    <configuration name="nacos.sql" type="DatabaseScript" editBeforeRun="true" temporary="true" nameIsGenerated="true">
+      <script-file value="$PROJECT_DIR$/db/nacos.sql" />
       <script-mode>FILE</script-mode>
       <data-source id="c51aba65-883b-45e1-b86a-718521c5aa59" />
       <method v="2" />
@@ -179,6 +210,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="PayApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <module name="pay-service" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.hmall.pay.PayApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="TradeApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <module name="trade" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.hmall.trade.TradeApplication" />
@@ -186,11 +224,20 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="UserApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <module name="user-service" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.hmall.user.UserApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="数据库脚本.nacos.sql" />
+        <item itemvalue="数据库脚本.hm-trade.sql" />
+        <item itemvalue="数据库脚本.hm-pay.sql" />
+        <item itemvalue="数据库脚本.hm-user.sql" />
         <item itemvalue="数据库脚本.hm-cart.sql" />
-        <item itemvalue="数据库脚本.hm-item.sql" />
-        <item itemvalue="数据库脚本.hmall.sql" />
       </list>
     </recent_temporary>
   </component>
@@ -210,7 +257,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1766129474037</updated>
-      <workItem from="1766129476274" duration="10069000" />
+      <workItem from="1766129476274" duration="13921000" />
     </task>
     <task id="LOCAL-00001" summary="修改mysql连接配置">
       <option name="closed" value="true" />

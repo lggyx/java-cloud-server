@@ -3,6 +3,10 @@
   <component name="SqlDialectMappings">
     <file url="file://$PROJECT_DIR$/db/hm-cart.sql" dialect="MySQL" />
     <file url="file://$PROJECT_DIR$/db/hm-item.sql" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/db/hm-pay.sql" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/db/hm-trade.sql" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/db/hm-user.sql" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/db/nacos.sql" dialect="MySQL" />
     <file url="file://$PROJECT_DIR$/mysql/init/hmall.sql" dialect="MySQL" />
   </component>
 </project>
