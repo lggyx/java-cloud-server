@@ -1,0 +1,38 @@
+22:46:18:149  INFO 11500 --- [main] com.hmall.cart.CartApplication           : Starting CartApplication using Java 11.0.29 on DESKTOP-CRMIG1A with PID 11500 (D:\DevPlan\abackend\java-cloud-server\cart-service\target\classes started by konoh in D:\DevPlan\abackend\java-cloud-server)
+22:46:18:151 DEBUG 11500 --- [main] com.hmall.cart.CartApplication           : Running with Spring Boot v2.7.12, Spring v5.3.27
+22:46:18:155  INFO 11500 --- [main] com.hmall.cart.CartApplication           : The following 1 profile is active: "dev"
+22:46:19:692  INFO 11500 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8082 (http)
+22:46:19:701  INFO 11500 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+22:46:19:702  INFO 11500 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.75]
+22:46:19:800  INFO 11500 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+22:46:19:801  INFO 11500 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1613 ms
+22:46:20:979  INFO 11500 --- [main] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2ControllerWebMvc#getDocumentation(String, HttpServletRequest)]
+22:46:21:046  INFO 11500 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8082 (http) with context path ''
+22:46:21:047  INFO 11500 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Documentation plugins bootstrapped
+22:46:21:049  INFO 11500 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+22:46:21:070  INFO 11500 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+22:46:21:162  INFO 11500 --- [main] com.hmall.cart.CartApplication           : Started CartApplication in 3.352 seconds (JVM running for 4.075)
+22:50:13:761  INFO 7640 --- [main] com.hmall.cart.CartApplication           : Starting CartApplication using Java 11.0.29 on DESKTOP-CRMIG1A with PID 7640 (D:\DevPlan\abackend\java-cloud-server\cart-service\target\classes started by konoh in D:\DevPlan\abackend\java-cloud-server)
+22:50:13:763 DEBUG 7640 --- [main] com.hmall.cart.CartApplication           : Running with Spring Boot v2.7.12, Spring v5.3.27
+22:50:13:763  INFO 7640 --- [main] com.hmall.cart.CartApplication           : The following 1 profile is active: "dev"
+22:50:14:682  INFO 7640 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8082 (http)
+22:50:14:688  INFO 7640 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+22:50:14:688  INFO 7640 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.75]
+22:50:14:778  INFO 7640 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+22:50:14:779  INFO 7640 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 978 ms
+22:50:15:797  INFO 7640 --- [main] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2ControllerWebMvc#getDocumentation(String, HttpServletRequest)]
+22:50:15:862  INFO 7640 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8082 (http) with context path ''
+22:50:15:865  INFO 7640 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Documentation plugins bootstrapped
+22:50:15:868  INFO 7640 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+22:50:15:893  INFO 7640 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+22:50:15:976  INFO 7640 --- [main] com.hmall.cart.CartApplication           : Started CartApplication in 2.502 seconds (JVM running for 3.146)
+22:50:49:534  INFO 7640 --- [http-nio-8082-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+22:50:49:540  INFO 7640 --- [http-nio-8082-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+22:50:49:544  INFO 7640 --- [http-nio-8082-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
+22:51:05:506  INFO 7640 --- [http-nio-8082-exec-6] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+22:51:06:002  INFO 7640 --- [http-nio-8082-exec-6] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+22:51:06:013 DEBUG 7640 --- [http-nio-8082-exec-6] c.h.cart.mapper.CartMapper.selectList    : ==>  Preparing: SELECT id,user_id,item_id,num,name,spec,price,image,create_time,update_time FROM cart WHERE (user_id = ?)
+22:51:06:058 DEBUG 7640 --- [http-nio-8082-exec-6] c.h.cart.mapper.CartMapper.selectList    : ==> Parameters: 1(Long)
+22:51:06:105 DEBUG 7640 --- [http-nio-8082-exec-6] c.h.cart.mapper.CartMapper.selectList    : <==      Total: 1
+22:55:36:077  INFO 7640 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+22:55:36:113  INFO 7640 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.

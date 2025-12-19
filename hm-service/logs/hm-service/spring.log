@@ -1,0 +1,19 @@
+15:41:36:146  INFO 14428 --- [main] c.h.service.impl.ItemServiceImplTest     : Starting ItemServiceImplTest using Java 11.0.29 on DESKTOP-CRMIG1A with PID 14428 (started by konoh in D:\DevPlan\abackend\java-cloud-server\hm-service)
+15:41:36:148 DEBUG 14428 --- [main] c.h.service.impl.ItemServiceImplTest     : Running with Spring Boot v2.7.12, Spring v5.3.27
+15:41:36:148  INFO 14428 --- [main] c.h.service.impl.ItemServiceImplTest     : The following 1 profile is active: "dev"
+15:41:37:932  INFO 14428 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+15:41:37:936  INFO 14428 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+15:41:37:969  INFO 14428 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 16 ms. Found 0 Redis repository interfaces.
+15:41:41:531  INFO 14428 --- [main] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2ControllerWebMvc#getDocumentation(String, HttpServletRequest)]
+15:41:42:150  INFO 14428 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Documentation plugins bootstrapped
+15:41:42:153  INFO 14428 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+15:41:42:190  INFO 14428 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+15:41:42:474  INFO 14428 --- [main] c.h.service.impl.ItemServiceImplTest     : Started ItemServiceImplTest in 6.848 seconds (JVM running for 8.265)
+15:41:43:250  WARN 14428 --- [main] com.hmall.item.service.impl.ItemServiceImpl   : SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@67d55a46] Transaction not enabled
+15:41:43:261  INFO 14428 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+15:41:43:595  INFO 14428 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+15:41:43:603 DEBUG 14428 --- [main] com.hmall.item.mapper.ItemMapper.updateStock  : ==>  Preparing: UPDATE item SET stock = stock - ? WHERE id = ?
+15:41:43:637 DEBUG 14428 --- [main] com.hmall.item.mapper.ItemMapper.updateStock  : ==> Parameters: 1(Integer), 317578(Long)
+15:41:43:638 DEBUG 14428 --- [main] com.hmall.item.mapper.ItemMapper.updateStock  : ==> Parameters: 1(Integer), 317580(Long)
+15:41:43:753  INFO 14428 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+15:41:43:780  INFO 14428 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
