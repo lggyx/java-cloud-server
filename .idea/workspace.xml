@@ -4,14 +4,23 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4d1056a6-6ebd-478f-bc55-2da16b2db4f7" name="更改" comment="修改密码验证为忽略验证，项目运行成功">
+    <list default="true" id="4d1056a6-6ebd-478f-bc55-2da16b2db4f7" name="更改" comment="开启Feign的连接池功能，使用okhttp">
+      <change afterPath="$PROJECT_DIR$/hm-api/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/hm-api/src/main/resources/META-INF/maven/archetype.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/hm-api/src/main/resources/archetype-resources/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/hm-api/src/main/resources/archetype-resources/src/main/java/App.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/hm-api/src/main/resources/archetype-resources/src/test/java/AppTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cart-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/cart-service/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cart-service/src/main/java/com/hmall/cart/CartApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/cart-service/src/main/java/com/hmall/cart/CartApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cart-service/src/main/java/com/hmall/cart/client/ItemClient.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/cart-service/src/main/java/com/hmall/cart/service/impl/CartServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/cart-service/src/main/java/com/hmall/cart/service/impl/CartServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cart-service/src/main/resources/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/cart-service/src/main/resources/application.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/logs/cart-service/spring.log" beforeDir="false" afterPath="$PROJECT_DIR$/logs/cart-service/spring.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/logs/item-service/spring.log" beforeDir="false" afterPath="$PROJECT_DIR$/logs/item-service/spring.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -58,6 +67,7 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "Maven. [org.apache.maven.plugins:maven-archetype-plugin:RELEASE:generate].executor": "Run",
     "Maven.hmall [install].executor": "Run",
     "RequestMappingsPanelOrder0": "0",
     "RequestMappingsPanelOrder1": "1",
@@ -72,7 +82,7 @@
     "git-widget-placeholder": "main",
     "jdk.selected.JAVA_MODULE": "11",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "D:/DevPlan/abackend/java-cloud-server/cart-service/src/main/java/com/hmall/cart/service",
+    "last_opened_file_path": "D:/DevPlan/abackend/java-cloud-server/trade-service/src/main/resources",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -96,13 +106,16 @@
     ]
   }
 }]]></component>
+  <component name="ReactorSettings">
+    <option name="notificationShown" value="true" />
+  </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\DevPlan\abackend\java-cloud-server\trade-service\src\main\resources" />
+      <recent name="D:\DevPlan\abackend\java-cloud-server\hm-api\src\main\java\com\hmall\api\" />
+      <recent name="D:\DevPlan\abackend\java-cloud-server\hm-api\src\main\java\com\hmall\api" />
       <recent name="D:\DevPlan\abackend\java-cloud-server\cart-service\src\main\java\com\hmall\cart\service" />
       <recent name="D:\DevPlan\abackend\java-cloud-server\cart-service\src\main\resources\mapper" />
-      <recent name="D:\DevPlan\abackend\java-cloud-server\cart-service\src\main\java\com\hmall\cart\domain" />
-      <recent name="D:\DevPlan\abackend\java-cloud-server\cart-service\src\main\resources" />
-      <recent name="D:\DevPlan\abackend\java-cloud-server\item-service\src\main\resources\mapper" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="com.hmall.cart.service" />
@@ -176,6 +189,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="TradeServiceApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <module name="trade" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.hmall.trade.TradeServiceApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="数据库脚本.hm-cart.sql" />
@@ -200,7 +220,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1766129474037</updated>
-      <workItem from="1766129476274" duration="6603000" />
+      <workItem from="1766129476274" duration="8175000" />
     </task>
     <task id="LOCAL-00001" summary="修改mysql连接配置">
       <option name="closed" value="true" />
@@ -218,7 +238,15 @@
       <option name="project" value="LOCAL" />
       <updated>1766152908637</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="开启Feign的连接池功能，使用okhttp">
+      <option name="closed" value="true" />
+      <created>1766158360980</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1766158360980</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -238,17 +266,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="修改mysql连接配置" />
     <MESSAGE value="修改密码验证为忽略验证，项目运行成功" />
-    <option name="LAST_COMMIT_MESSAGE" value="修改密码验证为忽略验证，项目运行成功" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>jar://$MAVEN_REPOSITORY$/org/springframework/cloud/spring-cloud-openfeign-core/3.1.3/spring-cloud-openfeign-core-3.1.3.jar!/org/springframework/cloud/openfeign/loadbalancer/FeignBlockingLoadBalancerClient.class</url>
-          <line>52</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <MESSAGE value="开启Feign的连接池功能，使用okhttp" />
+    <option name="LAST_COMMIT_MESSAGE" value="开启Feign的连接池功能，使用okhttp" />
   </component>
 </project>
